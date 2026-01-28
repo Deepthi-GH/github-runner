@@ -1,5 +1,5 @@
 name: create runner
-on: workflow-dispatch
+on: workflow_dispatch
 jobs:
   create-runner:
     runs-on: ubuntu-latest
