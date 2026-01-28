@@ -2,9 +2,23 @@ name: create runner
 on: workflow_dispatch
 jobs:
   create-runner:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #this is a github runner. if we install terraform only we can do terarform init. so we ahve to findout an action in github.
     steps:
       - name: checkout code.
         uses: actions/checkout@v6
       - name: list all files
         run: ls -l  
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+          aws-region: us-east-1 # Replace with your target AWS region
+
+           \
+     # installs latest version of terraform in the runner.
+      - name: run terarform init
+        uses: hashicorp/setup-terraform@v3
+
+          
