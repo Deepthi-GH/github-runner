@@ -10,7 +10,7 @@ jobs:
       - name: list all files
         run: ls -l  
 
-        # installs latest version of terraform in the runner.
+        # installs latest version of terraform in the runner
       - name: setup terraform 
         uses: hashicorp/setup-terraform@v3
 
